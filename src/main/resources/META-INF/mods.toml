@@ -1,0 +1,9 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+
+[[mods]]
+modId="veritykiller"
+version="1.0.0"
+displayName="Verity优化器"
+authors="BeilinYao"
+description="检测到Verity自动优化！"
