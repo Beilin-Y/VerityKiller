@@ -15,11 +15,11 @@ public class VerityCrashMod {
         for (IModInfo mod : ModList.get().getMods()) {
             if (BANNED_MODS.contains(mod.getModId().toLowerCase())) {
                 throw new RuntimeException(
-                    "§c检测到Verity自动崩溃 [" + mod.getDisplayName() + "]！\n" +
-                    "§6恭喜你中大奖了！\n" +
-                    "§7(把本模组删掉即可恢复正常)"
+                    "\u00A7c检测到Verity自动崩溃 [" + mod.getDisplayName() + "]！\n" +
+                    "\u00A76恭喜你中大奖了！\n" +
+                    "\u00A77（把本模组删掉即可恢复正常）"
                 );
             }
         }
     }
-            }
+}
