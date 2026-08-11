@@ -11,7 +11,10 @@ jobs:
           java-version: 17
           distribution: temurin
       - uses: gradle/actions/setup-gradle@v4
-      - run: gradle build
+      - name: Ensure Gradle wrapper is executable
+        run: chmod +x gradlew
+      - name: Build with Gradle wrapper
+        run: ./gradlew build --no-daemon
       - uses: actions/upload-artifact@v4
         with:
           name: VerityKiller-Mod
