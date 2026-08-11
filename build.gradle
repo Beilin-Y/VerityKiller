@@ -1,13 +1,32 @@
-plugins {
-    id 'net.minecraftforge.gradle' version '6.0.26'
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '6.0.26', changing: true
+    }
 }
+
+apply plugin: 'net.minecraftforge.gradle'
 
 version = '1.0.0'
 group = 'com.example.veritykiller'
 archivesBaseName = 'VerityKiller'
 
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
 minecraft {
     mappings channel: 'official', version: '1.20.1'
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+        }
+        server {
+            workingDirectory project.file('run')
+        }
+    }
 }
 
 dependencies {
