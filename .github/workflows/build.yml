@@ -10,26 +10,12 @@ jobs:
         with:
           java-version: 17
           distribution: temurin
-      - uses: gradle/actions/setup-gradle@v4
-      - name: Build with Gradle (wrapper if present)
-        run: |
-          set -e
-          # Prefer wrapper at repo root
-          if [ -f "./gradlew" ]; then
-            chmod +x ./gradlew
-            ./gradlew build --no-daemon
-          else
-            # Search for gradlew in the repository (first match)
-            GW=$(find . -type f -name gradlew -print -quit || true)
-            if [ -n "$GW" ]; then
-              DIR=$(dirname "$GW")
-              chmod +x "$GW"
-              (cd "$DIR" && ./gradlew build --no-daemon)
-            else
-              echo "No gradlew found in repo — falling back to system 'gradle'"
-              gradle build --no-daemon
-            fi
-          fi
+      - name: Setup Gradle (8.5)
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.5'
+      - name: Build with Gradle
+        run: gradle build --no-daemon
       - uses: actions/upload-artifact@v4
         with:
           name: VerityKiller-Mod
